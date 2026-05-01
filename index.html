@@ -25,14 +25,17 @@
 html{scroll-behavior:smooth;}
 body{background:var(--navy);color:var(--white);font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none;}
 
-/* ── CURSOR (desktop only) ── */
+/* ── CURSOR ── */
 #cursor{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;}
 .c-dot{position:absolute;width:7px;height:7px;background:var(--purple2);border-radius:50%;transform:translate(-50%,-50%);}
 .c-ring{position:absolute;width:32px;height:32px;border:1px solid var(--purple);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
 body:has(a:hover) .c-ring,body:has(button:hover) .c-ring{width:52px;height:52px;border-color:var(--purple2);}
 
-/* ── CANVAS ── */
+/* ── CANVAS BG ── */
 #bg-canvas{position:fixed;inset:0;z-index:0;}
+
+/* ── PARTICLES CANVAS (hero only) ── */
+#particles-canvas{position:absolute;inset:0;z-index:1;pointer-events:none;}
 
 /* ── NOISE ── */
 body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;
@@ -64,22 +67,22 @@ nav a:hover{color:var(--purple3);}
 .mobile-menu .mob-cta{background:linear-gradient(135deg,var(--purple),var(--purple2));padding:14px 40px;border-radius:8px;margin-top:1rem;}
 
 /* ── HERO ── */
-#hero{position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 5%;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(124,58,237,.08);border-radius:100px;padding:6px 16px;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.15em;color:var(--purple3);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:fadeUp .8s .3s forwards;}
+#hero{position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 5%;overflow:hidden;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(124,58,237,.08);border-radius:100px;padding:6px 16px;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.15em;color:var(--purple3);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:fadeUp .8s .3s forwards;position:relative;z-index:2;}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--purple2);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero-title{font-size:clamp(2.8rem,8vw,7rem);font-weight:800;line-height:.9;letter-spacing:-.03em;max-width:860px;opacity:0;animation:fadeUp .9s .5s forwards;}
+.hero-title{font-size:clamp(2.8rem,8vw,7rem);font-weight:800;line-height:.9;letter-spacing:-.03em;max-width:860px;opacity:0;animation:fadeUp .9s .5s forwards;position:relative;z-index:2;}
 .hero-title .outline{color:transparent;-webkit-text-stroke:1.5px var(--purple);}
 .hero-title .grad{background:linear-gradient(135deg,var(--purple2),var(--purple3),#e879f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 #typed-el{border-right:3px solid var(--purple2);animation:blink .7s infinite;}
 @keyframes blink{50%{border-color:transparent}}
-.hero-sub{margin-top:28px;max-width:500px;font-family:'DM Mono',monospace;font-size:.88rem;line-height:1.75;color:var(--muted);opacity:0;animation:fadeUp .9s .7s forwards;}
-.hero-btns{margin-top:48px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .9s forwards;}
+.hero-sub{margin-top:28px;max-width:500px;font-family:'DM Mono',monospace;font-size:.88rem;line-height:1.75;color:var(--muted);opacity:0;animation:fadeUp .9s .7s forwards;position:relative;z-index:2;}
+.hero-btns{margin-top:48px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .9s forwards;position:relative;z-index:2;}
 .btn-main{background:linear-gradient(135deg,var(--purple),var(--purple2));color:var(--white);padding:15px 40px;border-radius:8px;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:none;cursor:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(124,58,237,.3);}
 .btn-main:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(124,58,237,.5);}
 .btn-outline{border:1px solid var(--border);color:var(--purple3);padding:15px 32px;border-radius:8px;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:none;transition:border-color .2s,background .2s;}
 .btn-outline:hover{border-color:var(--purple);background:rgba(124,58,237,.08);}
-.hero-scroll{position:absolute;bottom:36px;left:5%;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--muted2);text-transform:uppercase;opacity:0;animation:fadeUp .9s 1.2s forwards;}
+.hero-scroll{position:absolute;bottom:36px;left:5%;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--muted2);text-transform:uppercase;opacity:0;animation:fadeUp .9s 1.2s forwards;z-index:2;}
 .scroll-bar{width:1px;height:44px;background:linear-gradient(to bottom,var(--purple),transparent);animation:scrollAnim 2.2s ease-in-out infinite;}
 @keyframes scrollAnim{0%,100%{opacity:1}50%{opacity:.2}}
 
@@ -99,46 +102,80 @@ nav a:hover{color:var(--purple3);}
 .gal-hint{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--muted2);text-transform:uppercase;display:flex;align-items:center;gap:8px;padding-bottom:4px;white-space:nowrap;}
 .gal-hint::before{content:'';display:inline-block;width:16px;height:1px;background:var(--muted2);}
 
-/* ── SCROLL TRACK — ocupa toda a largura ── */
-.track-wrap{
-  position:relative;
-  overflow:hidden;
-  width:100%;          /* full viewport width */
-}
-.track-wrap::before,.track-wrap::after{
-  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
-}
+/* ── SCROLL TRACK ── */
+.track-wrap{position:relative;overflow:hidden;width:100%;}
+.track-wrap::before,.track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
 .track-wrap::before{left:0;background:linear-gradient(to right,var(--navy) 30%,transparent);}
 .track-wrap::after{right:0;background:linear-gradient(to left,var(--navy) 30%,transparent);}
-
-/* AUTO-SCROLL INNER */
 .track-auto{display:flex;gap:14px;padding:8px 0 20px;width:max-content;will-change:transform;}
 
 /* ── CARDS ── */
-.gc{
-  flex-shrink:0;border-radius:12px;overflow:hidden;
-  background:var(--card-bg);
-  border:1px solid rgba(124,58,237,.14);
-  position:relative;
-  transition:transform .3s,border-color .3s,box-shadow .3s;
-  cursor:none;
-}
+.gc{flex-shrink:0;border-radius:12px;overflow:hidden;background:var(--card-bg);border:1px solid rgba(124,58,237,.14);position:relative;transition:transform .3s,border-color .3s,box-shadow .3s;cursor:none;}
 .gc:hover{transform:translateY(-5px) scale(1.02);border-color:rgba(124,58,237,.5);box-shadow:0 12px 40px rgba(124,58,237,.25);}
-
-/* TAMANHOS */
-.track-cri .gc  { width:196px; height:245px; }
-.track-car .gc  { width:236px; height:236px; }
-.track-idv .gc  { width:290px; height:180px; }
-
-/* placeholder */
+.track-cri .gc{width:196px;height:245px;}
+.track-car .gc{width:236px;height:236px;}
+.track-idv .gc{width:290px;height:180px;}
 .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#12122a 0%,#1c1b38 100%);}
-.ph svg{width:32px;height:32px;fill:none;stroke:var(--purple3);stroke-width:1.5;opacity:.7;}
-.ph-lbl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:var(--muted2);text-transform:uppercase;text-align:center;padding:0 12px;line-height:1.5;}
-
-/* hover overlay */
-.gc .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,26,.92) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:14px;}
+.gc .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,26,.92) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:space-between;padding:14px;}
 .gc:hover .ov{opacity:1;}
 .ov span{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;color:var(--purple3);text-transform:uppercase;}
+.ov-expand{background:rgba(124,58,237,.8);border:none;border-radius:6px;padding:5px 10px;color:white;font-size:.6rem;font-family:'DM Mono',monospace;letter-spacing:.1em;cursor:pointer;transition:background .2s;}
+.ov-expand:hover{background:var(--purple);}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{position:relative;max-width:800px;max-height:90vh;border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,.3);box-shadow:0 0 80px rgba(124,58,237,.3);transform:scale(.9);transition:transform .3s;}
+.modal-overlay.open .modal-box{transform:scale(1);}
+.modal-box img{width:100%;height:auto;display:block;max-height:85vh;object-fit:contain;background:var(--card-bg);}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(15,15,26,.9);border:1px solid rgba(124,58,237,.4);color:var(--purple3);font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,color .2s;z-index:2;}
+.modal-close:hover{background:var(--purple);color:white;}
+.modal-label{position:absolute;bottom:14px;left:14px;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.14em;color:var(--purple3);text-transform:uppercase;background:rgba(15,15,26,.8);padding:6px 12px;border-radius:6px;}
+
+/* ══════════════════════════════
+   SEÇÃO "NÃO ESTÁ SOZINHO"
+   ══════════════════════════════ */
+#nao-sozinho{position:relative;z-index:10;background:var(--navy);padding:100px 5%;border-top:1px solid rgba(124,58,237,.08);overflow:hidden;}
+#nao-sozinho::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(124,58,237,.06) 0%,transparent 70%);pointer-events:none;}
+
+/* particles for this section */
+#particles-solo{position:absolute;inset:0;z-index:0;pointer-events:none;}
+
+.nao-head{text-align:center;margin-bottom:72px;position:relative;z-index:2;}
+.nao-head h2{font-size:clamp(1.8rem,4vw,3.2rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;max-width:700px;margin:0 auto 16px;}
+.nao-head h2 span{background:linear-gradient(135deg,var(--purple2),var(--purple3),#e879f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nao-head p{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--muted);line-height:1.8;max-width:560px;margin:0 auto;}
+
+.nao-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;margin-bottom:60px;}
+
+/* laptop mockup */
+.laptop-wrap{position:relative;}
+.laptop{width:100%;max-width:520px;filter:drop-shadow(0 30px 60px rgba(124,58,237,.25));}
+.laptop-screen{position:absolute;top:6.5%;left:12.5%;width:75%;height:67%;border-radius:4px;overflow:hidden;background:#0a0a15;}
+.screen-inner{width:100%;height:100%;background:linear-gradient(135deg,#0f0f1a,#1a1035);display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:3px;padding:6px;}
+.screen-thumb{border-radius:3px;background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(155,89,245,.2));border:1px solid rgba(124,58,237,.2);animation:screenPulse 3s ease-in-out infinite;}
+.screen-thumb:nth-child(odd){animation-delay:.5s;}
+.screen-thumb:nth-child(3n){animation-delay:1s;}
+@keyframes screenPulse{0%,100%{opacity:.7}50%{opacity:1}}
+
+/* steps */
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(124,58,237,.08);opacity:0;transform:translateX(24px);transition:opacity .6s,transform .6s;}
+.step.visible{opacity:1;transform:none;}
+.step:last-child{border-bottom:none;}
+.step-num{flex-shrink:0;width:36px;height:36px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--purple3);background:rgba(124,58,237,.06);}
+.step-body{}
+.step-title{font-size:1rem;font-weight:700;margin-bottom:6px;}
+.step-desc{font-family:'DM Mono',monospace;font-size:.75rem;line-height:1.7;color:var(--muted);}
+
+/* bottom mini cards */
+.nao-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:2;}
+.nao-card{background:var(--card-bg);border:1px solid rgba(124,58,237,.1);border-radius:14px;padding:24px 20px;transition:border-color .3s,transform .3s;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s,border-color .3s;}
+.nao-card.visible{opacity:1;transform:none;}
+.nao-card:hover{border-color:rgba(124,58,237,.4);transform:translateY(-4px);}
+.nao-card-icon{font-size:1.4rem;margin-bottom:12px;display:block;}
+.nao-card h4{font-size:.95rem;font-weight:700;margin-bottom:8px;}
+.nao-card p{font-family:'DM Mono',monospace;font-size:.72rem;line-height:1.7;color:var(--muted);}
 
 /* ── FEATURES ── */
 #features{position:relative;z-index:10;background:var(--navy);padding:80px 5%;border-top:1px solid rgba(124,58,237,.08);}
@@ -157,22 +194,25 @@ nav a:hover{color:var(--purple3);}
 /* ── PRICING ── */
 #pricing{position:relative;z-index:10;background:var(--navy);padding:80px 5%;border-top:1px solid rgba(124,58,237,.08);}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px;}
-.p-card{background:var(--card-bg);border:1px solid rgba(124,58,237,.12);border-radius:16px;padding:44px 36px;position:relative;transition:border-color .3s,box-shadow .3s;}
+.p-card{background:var(--card-bg);border:1px solid rgba(124,58,237,.12);border-radius:16px;padding:44px 36px;position:relative;transition:border-color .3s,box-shadow .3s;display:flex;flex-direction:column;}
 .p-card:hover{border-color:rgba(124,58,237,.35);box-shadow:0 8px 40px rgba(124,58,237,.12);}
 .p-card.feat{border-color:var(--purple);background:linear-gradient(160deg,#16153a,#12122a);box-shadow:0 0 60px rgba(124,58,237,.2);}
 .p-card.feat::before{content:'Mais popular';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:5px 16px;border-radius:0 0 8px 8px;white-space:nowrap;}
 .p-tier{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--purple3);text-transform:uppercase;margin-bottom:16px;}
-.p-price{font-size:2.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:6px;}
-.p-price sup{font-size:1.1rem;vertical-align:super;}
+.p-tagline{font-size:1.3rem;font-weight:700;margin-bottom:6px;line-height:1.2;}
 .p-period{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:32px;}
 .p-div{height:1px;background:rgba(124,58,237,.1);margin-bottom:28px;}
-.p-feats{list-style:none;}
+.p-feats{list-style:none;flex:1;}
 .p-feats li{font-family:'DM Mono',monospace;font-size:.74rem;line-height:1.6;color:var(--muted);padding:7px 0;display:flex;gap:10px;}
 .p-feats li::before{content:'→';color:var(--purple3);flex-shrink:0;}
-.p-btn{display:block;width:100%;margin-top:32px;padding:14px;text-align:center;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:none;border:1px solid var(--border);color:var(--purple3);transition:all .2s;}
-.p-btn:hover{background:rgba(124,58,237,.15);border-color:var(--purple);}
-.p-card.feat .p-btn{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border-color:transparent;box-shadow:0 4px 20px rgba(124,58,237,.4);}
-.p-card.feat .p-btn:hover{box-shadow:0 4px 30px rgba(124,58,237,.6);}
+.p-btn{display:block;width:100%;margin-top:32px;padding:16px;text-align:center;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .25s;}
+/* default plan btn */
+.p-card:not(.feat) .p-btn{background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:var(--purple3);}
+.p-card:not(.feat) .p-btn:hover{background:rgba(124,58,237,.25);border-color:var(--purple);color:white;}
+/* featured plan btn — super chamativo */
+.p-card.feat .p-btn{background:linear-gradient(135deg,var(--purple),var(--purple2),#e879f9);background-size:200% 200%;color:#fff;border:none;box-shadow:0 4px 24px rgba(124,58,237,.5),0 0 0 0 rgba(155,89,245,.4);animation:btnPulse 2.5s ease-in-out infinite;}
+.p-card.feat .p-btn:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(124,58,237,.7);}
+@keyframes btnPulse{0%,100%{box-shadow:0 4px 24px rgba(124,58,237,.5),0 0 0 0 rgba(155,89,245,.4)}50%{box-shadow:0 4px 24px rgba(124,58,237,.5),0 0 0 10px rgba(155,89,245,0)}}
 
 /* ── CTA ── */
 #cta{position:relative;z-index:10;background:var(--navy);padding:100px 5%;text-align:center;overflow:hidden;border-top:1px solid rgba(124,58,237,.08);}
@@ -192,63 +232,46 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 /* ══════════════════════════════════════
    MOBILE — max-width: 768px
    ══════════════════════════════════════ */
-@media (max-width: 768px) {
-  /* cursor off */
+@media(max-width:768px){
   body{cursor:auto;}
   #cursor{display:none;}
-
-  /* nav */
-  nav ul{display:none;}
-  .nav-cta{display:none;}
+  nav ul,.nav-cta{display:none;}
   .hamburger{display:flex;}
-
-  /* hero */
   #hero{padding:0 5%;padding-top:100px;min-height:100svh;}
   .hero-title{font-size:clamp(2.6rem,11vw,4rem);}
   .hero-sub{font-size:.8rem;}
   .hero-btns{flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px;}
   .btn-main,.btn-outline{width:100%;text-align:center;padding:14px 24px;}
   .hero-scroll{display:none;}
-
-  /* stats */
   #stats{gap:24px;padding:40px 5%;}
   .stat{min-width:calc(50% - 24px);flex:0 0 calc(50% - 24px);}
   .stat-n{font-size:2rem;}
-
-  /* gallery head */
   .gal-head{flex-direction:column;align-items:flex-start;gap:8px;}
   .gal-hint{display:none;}
   .gal-section{padding:50px 0 30px;}
-
-  /* card sizes — menores no mobile */
   .track-cri .gc{width:140px;height:175px;}
   .track-car .gc{width:160px;height:160px;}
   .track-idv .gc{width:220px;height:138px;}
-
-  /* features */
+  #nao-sozinho{padding:60px 5%;}
+  .nao-grid{grid-template-columns:1fr;gap:32px;}
+  .laptop-wrap{display:none;}
+  .nao-cards{grid-template-columns:1fr 1fr;gap:12px;}
+  .nao-card{padding:18px 16px;}
   #features{padding:60px 5%;}
   .feat-grid{grid-template-columns:1fr;gap:2px;}
   .feat-card{padding:32px 24px;}
-
-  /* pricing */
   #pricing{padding:60px 5%;}
   .price-grid{grid-template-columns:1fr;gap:16px;}
   .p-card{padding:32px 24px;}
   .p-card.feat{margin-top:24px;}
-
-  /* cta */
   #cta{padding:70px 5%;}
   .cta-title{font-size:clamp(2rem,8vw,3rem);}
-  .btn-main{display:inline-block;width:auto;font-size:.85rem;padding:14px 32px;}
-
-  /* footer */
   footer{flex-direction:column;text-align:center;padding:28px 5%;}
+  .modal-box{max-width:95vw;}
 }
-
-/* ── SMALL PHONES ── */
-@media (max-width: 420px) {
+@media(max-width:420px){
   .hero-title{font-size:clamp(2.2rem,12vw,3rem);}
-  .stat{min-width:calc(50% - 16px);flex:0 0 calc(50% - 16px);}
+  .nao-cards{grid-template-columns:1fr;}
   .track-cri .gc{width:120px;height:150px;}
   .track-car .gc{width:140px;height:140px;}
   .track-idv .gc{width:190px;height:119px;}
@@ -260,12 +283,21 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 <div id="cursor"><div class="c-ring"></div><div class="c-dot"></div></div>
 <canvas id="bg-canvas"></canvas>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <img id="modal-img" src="" alt="">
+    <div class="modal-label" id="modal-label"></div>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="logo"><span class="logo-t">Growi</span><span class="logo-x">X</span><span class="logo-arr"> ↗</span></div>
   <ul>
     <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#features">Recursos</a></li>
+    <li><a href="#nao-sozinho">Recursos</a></li>
     <li><a href="#pricing">Planos</a></li>
   </ul>
   <a href="#pricing" class="nav-cta">Começar agora</a>
@@ -277,13 +309,14 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#galeria" onclick="toggleMenu()">Galeria</a>
-  <a href="#features" onclick="toggleMenu()">Recursos</a>
+  <a href="#nao-sozinho" onclick="toggleMenu()">Recursos</a>
   <a href="#pricing" onclick="toggleMenu()">Planos</a>
   <a href="#pricing" class="mob-cta" onclick="toggleMenu()">Começar agora</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
+  <canvas id="particles-canvas"></canvas>
   <div class="hero-badge"><div class="badge-dot"></div>Plataforma de criação com IA</div>
   <h1 class="hero-title">
     Evoluir<br>
@@ -309,7 +342,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 <!-- GALERIA -->
 <div id="galeria">
 
-  <!-- ① CRIATIVOS — 4:5 → scroll direita -->
+  <!-- ① CRIATIVOS -->
   <div class="gal-section">
     <div class="gal-head">
       <div class="gal-head-left">
@@ -320,18 +353,18 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
     </div>
     <div class="track-wrap">
       <div class="track-auto track-cri" id="track-cri">
-        <div class="gc"><img src="card_01_financeiro.png" alt="Criativo 01" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 01</span></div></div>
-        <div class="gc"><img src="card_02_beleza.png" alt="Criativo 02" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 02</span></div></div>
-        <div class="gc"><img src="imagem-carrossel-criativo-02.webp" alt="Criativo 03" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 03</span></div></div>
-        <div class="gc"><img src="imagem-carrossel-criativo-03.webp" alt="Criativo 04" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 04</span></div></div>
-        <div class="gc"><img src="imagem-carrossel-criativo-06.webp" alt="Criativo 05" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 05</span></div></div>
-        <div class="gc"><img src="imagem-carrossel-criativo-08.webp" alt="Criativo 06" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 06</span></div></div>
-        <div class="gc"><img src="imagem-carrossel-criativo-10.webp" alt="Criativo 07" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 07</span></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="card_01_financeiro.png" alt="Criativo 01" data-label="Criativo 01" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 01</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="card_02_beleza.png" alt="Criativo 02" data-label="Criativo 02" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 02</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="imagem-carrossel-criativo-02.webp" alt="Criativo 03" data-label="Criativo 03" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 03</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="imagem-carrossel-criativo-03.webp" alt="Criativo 04" data-label="Criativo 04" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 04</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="imagem-carrossel-criativo-06.webp" alt="Criativo 05" data-label="Criativo 05" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 05</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="imagem-carrossel-criativo-08.webp" alt="Criativo 06" data-label="Criativo 06" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 06</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="imagem-carrossel-criativo-10.webp" alt="Criativo 07" data-label="Criativo 07" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Criativo 07</span><button class="ov-expand">Expandir ↗</button></div></div>
       </div>
     </div>
   </div>
 
-  <!-- ② CARROSSEIS — 1:1 → scroll esquerda -->
+  <!-- ② CARROSSEIS -->
   <div class="gal-section" style="padding-top:40px;">
     <div class="gal-head">
       <div class="gal-head-left">
@@ -342,24 +375,24 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
     </div>
     <div class="track-wrap">
       <div class="track-auto track-car" id="track-car">
-        <div class="gc"><img src="slide_01_hook.png" alt="Carrossel 01" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 01</span></div></div>
-        <div class="gc"><img src="slide_02_framework.png" alt="Carrossel 02" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 02</span></div></div>
-        <div class="gc"><img src="slide_03_cta.png" alt="Carrossel 03" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 03</span></div></div>
-        <div class="gc"><img src="trafegoads_01_hook.png" alt="Carrossel 04" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 04</span></div></div>
-        <div class="gc"><img src="trafegoads_02_erros.png" alt="Carrossel 05" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 05</span></div></div>
-        <div class="gc"><img src="trafegoads_03_cta.png" alt="Carrossel 06" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 06</span></div></div>
-        <div class="gc"><img src="aa.png" alt="Carrossel 07" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 07</span></div></div>
-        <div class="gc"><img src="ab.png" alt="Carrossel 08" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 08</span></div></div>
-        <div class="gc"><img src="ac.png" alt="Carrossel 09" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 09</span></div></div>
-        <div class="gc"><img src="ba.png" alt="Carrossel 10" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 10</span></div></div>
-        <div class="gc"><img src="bb.png" alt="Carrossel 11" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 11</span></div></div>
-        <div class="gc"><img src="bc.png" alt="Carrossel 12" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 12</span></div></div>
-        <div class="gc"><img src="bd.png" alt="Carrossel 13" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 13</span></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="slide_01_hook.png" alt="Carrossel 01" data-label="Carrossel 01" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 01</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="slide_02_framework.png" alt="Carrossel 02" data-label="Carrossel 02" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 02</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="slide_03_cta.png" alt="Carrossel 03" data-label="Carrossel 03" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 03</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="trafegoads_01_hook.png" alt="Carrossel 04" data-label="Carrossel 04" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 04</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="trafegoads_02_erros.png" alt="Carrossel 05" data-label="Carrossel 05" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 05</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="trafegoads_03_cta.png" alt="Carrossel 06" data-label="Carrossel 06" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 06</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="aa.png" alt="Carrossel 07" data-label="Carrossel 07" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 07</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ab.png" alt="Carrossel 08" data-label="Carrossel 08" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 08</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ac.png" alt="Carrossel 09" data-label="Carrossel 09" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 09</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ba.png" alt="Carrossel 10" data-label="Carrossel 10" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 10</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="bb.png" alt="Carrossel 11" data-label="Carrossel 11" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 11</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="bc.png" alt="Carrossel 12" data-label="Carrossel 12" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 12</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="bd.png" alt="Carrossel 13" data-label="Carrossel 13" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Carrossel 13</span><button class="ov-expand">Expandir ↗</button></div></div>
       </div>
     </div>
   </div>
 
-  <!-- ③ IDENTIDADE VISUAL — 16:9 → scroll direita -->
+  <!-- ③ IDENTIDADE VISUAL -->
   <div class="gal-section" style="padding-top:40px;">
     <div class="gal-head">
       <div class="gal-head-left">
@@ -370,57 +403,121 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
     </div>
     <div class="track-wrap">
       <div class="track-auto track-idv" id="track-idv">
-        <div class="gc"><img src="ChatGPT Image 30 de abr. de 2026, 21_05_00.png" alt="Identidade 01" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 01</span></div></div>
-        <div class="gc"><img src="ChatGPT Image 30 de abr. de 2026, 21_06_03.png" alt="Identidade 02" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 02</span></div></div>
-        <div class="gc"><img src="ChatGPT Image 30 de abr. de 2026, 21_09_04.png" alt="Identidade 03" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 03</span></div></div>
-        <div class="gc"><img src="ChatGPT Image 30 de abr. de 2026, 21_10_41.png" alt="Identidade 04" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 04</span></div></div>
-        <div class="gc"><img src="ChatGPT Image 30 de abr. de 2026, 21_12_07.png" alt="Identidade 05" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 05</span></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ChatGPT Image 30 de abr. de 2026, 21_05_00.png" alt="Identidade 01" data-label="Identidade 01" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 01</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ChatGPT Image 30 de abr. de 2026, 21_06_03.png" alt="Identidade 02" data-label="Identidade 02" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 02</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ChatGPT Image 30 de abr. de 2026, 21_09_04.png" alt="Identidade 03" data-label="Identidade 03" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 03</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ChatGPT Image 30 de abr. de 2026, 21_10_41.png" alt="Identidade 04" data-label="Identidade 04" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 04</span><button class="ov-expand">Expandir ↗</button></div></div>
+        <div class="gc" onclick="openModal(this)"><img src="ChatGPT Image 30 de abr. de 2026, 21_12_07.png" alt="Identidade 05" data-label="Identidade 05" style="width:100%;height:100%;object-fit:cover;display:block;"><div class="ov"><span>Identidade 05</span><button class="ov-expand">Expandir ↗</button></div></div>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- FEATURES -->
-<section id="features">
-  <p class="s-label">Recursos</p>
-  <h2 class="s-title" style="margin-bottom:0">O que você consegue <span>criar</span></h2>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-n">01</div>
-      <span class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-      <h3 class="feat-title">Interface Node-Based</h3>
-      <p class="feat-desc">Monte fluxos visuais conectando nodes. Controle total, zero código.</p>
+<!-- ══════════════════════════════
+     SEÇÃO "NÃO ESTÁ SOZINHO"
+     ══════════════════════════════ -->
+<section id="nao-sozinho">
+  <canvas id="particles-solo"></canvas>
+
+  <div class="nao-head">
+    <p class="s-label">Suporte & Aprendizado</p>
+    <h2>Aqui você <span>não está sozinho.</span><br>Nós te ensinamos a extrair o <span>melhor da ferramenta.</span></h2>
+    <p>Diferente de outras ferramentas que você assina e fica à mercê de aprender tudo sozinho, aqui você tem acesso a aulas diretas te ensinando a criar exatamente o que você precisa.</p>
+  </div>
+
+  <div class="nao-grid">
+    <!-- laptop mockup -->
+    <div class="laptop-wrap">
+      <svg class="laptop" viewBox="0 0 520 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- base -->
+        <rect x="10" y="295" width="500" height="20" rx="6" fill="#1a1a2e" stroke="rgba(124,58,237,.3)" stroke-width="1"/>
+        <rect x="180" y="290" width="160" height="8" rx="4" fill="#13132a"/>
+        <!-- body -->
+        <rect x="20" y="20" width="480" height="275" rx="12" fill="#13132a" stroke="rgba(124,58,237,.25)" stroke-width="1.5"/>
+        <!-- screen bezel -->
+        <rect x="30" y="28" width="460" height="258" rx="8" fill="#0a0a18"/>
+        <!-- camera -->
+        <circle cx="260" cy="24" r="3" fill="#1a1a2e"/>
+        <!-- screen content -->
+        <foreignObject x="34" y="32" width="452" height="250">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="screen-inner" style="width:100%;height:100%;background:linear-gradient(135deg,#0f0f1a,#1a1035);display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:4px;padding:8px;border-radius:6px;">
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.4),rgba(155,89,245,.2));border:1px solid rgba(124,58,237,.3);animation:screenPulse 3s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(155,89,245,.3),rgba(232,121,249,.2));border:1px solid rgba(124,58,237,.2);animation:screenPulse 3s 0.4s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(167,139,250,.25));border:1px solid rgba(124,58,237,.25);animation:screenPulse 3s 0.8s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(100,40,220,.4),rgba(124,58,237,.3));border:1px solid rgba(124,58,237,.3);animation:screenPulse 3s 0.2s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(155,89,245,.4),rgba(232,121,249,.3));border:1px solid rgba(124,58,237,.2);animation:screenPulse 3s 1s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(100,40,220,.4));border:1px solid rgba(124,58,237,.25);animation:screenPulse 3s 0.6s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(167,139,250,.4),rgba(124,58,237,.3));border:1px solid rgba(124,58,237,.3);animation:screenPulse 3s 1.2s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(155,89,245,.3));border:1px solid rgba(124,58,237,.2);animation:screenPulse 3s 0.3s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(232,121,249,.25),rgba(124,58,237,.35));border:1px solid rgba(124,58,237,.25);animation:screenPulse 3s 0.9s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.4),rgba(167,139,250,.3));border:1px solid rgba(124,58,237,.3);animation:screenPulse 3s 0.5s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(100,40,220,.35),rgba(124,58,237,.25));border:1px solid rgba(124,58,237,.2);animation:screenPulse 3s 1.1s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(155,89,245,.3),rgba(100,40,220,.4));border:1px solid rgba(124,58,237,.25);animation:screenPulse 3s 0.7s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.4),rgba(232,121,249,.3));border:1px solid rgba(124,58,237,.3);animation:screenPulse 3s 1.3s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(167,139,250,.35),rgba(124,58,237,.4));border:1px solid rgba(124,58,237,.2);animation:screenPulse 3s 0.1s ease-in-out infinite;"></div>
+            <div style="border-radius:4px;background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(155,89,245,.35));border:1px solid rgba(124,58,237,.25);animation:screenPulse 3s 0.8s ease-in-out infinite;"></div>
+          </div>
+        </foreignObject>
+        <!-- glow -->
+        <ellipse cx="260" cy="310" rx="180" ry="8" fill="rgba(124,58,237,.15)"/>
+      </svg>
     </div>
-    <div class="feat-card">
-      <div class="feat-n">02</div>
-      <span class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
-      <h3 class="feat-title">Prompts Estruturados</h3>
-      <p class="feat-desc">Templates prontos que garantem resultados consistentes desde o primeiro uso.</p>
+
+    <!-- steps -->
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3 class="step-title">Onboarding Guiado</h3>
+          <p class="step-desc">No seu primeiro acesso, um tour interativo te mostra exatamente onde tudo está e como funciona cada ferramenta.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3 class="step-title">Vídeos Passo a Passo</h3>
+          <p class="step-desc">Aulas curtas e objetivas que te ensinam a criar do zero — posts, flyers, logos, fotos de produto e muito mais.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3 class="step-title">Dicas Diárias de IA</h3>
+          <p class="step-desc">Todo dia uma nova dica de como usar a IA de forma mais inteligente: prompts prontos, combinações de estilos e tendências.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3 class="step-title">Domínio Completo</h3>
+          <p class="step-desc">Em poucos dias você já cria como profissional. Sem confusão, sem frustração — só resultados reais.</p>
+        </div>
+      </div>
     </div>
-    <div class="feat-card">
-      <div class="feat-n">03</div>
-      <span class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span>
-      <h3 class="feat-title">API Própria</h3>
-      <p class="feat-desc">Conecte sua chave e gere sem limites. Pague só pelo que consumir.</p>
+  </div>
+
+  <!-- mini cards -->
+  <div class="nao-cards">
+    <div class="nao-card">
+      <span class="nao-card-icon">⚡</span>
+      <h4>Interface Intuitiva</h4>
+      <p>Monte fluxos visuais conectando nodes. Controle total, zero código necessário.</p>
     </div>
-    <div class="feat-card">
-      <div class="feat-n">04</div>
-      <span class="feat-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
-      <h3 class="feat-title">Trilha de Aprendizado</h3>
-      <p class="feat-desc">Do zero ao profissional em dias com vídeos e dicas diárias de prompt.</p>
+    <div class="nao-card">
+      <span class="nao-card-icon">💡</span>
+      <h4>Dicas Exclusivas</h4>
+      <p>Truques e atalhos para criar artes de alto impacto com poucos cliques.</p>
     </div>
-    <div class="feat-card">
-      <div class="feat-n">05</div>
-      <span class="feat-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
-      <h3 class="feat-title">Alta Consistência</h3>
-      <p class="feat-desc">Gere variações mantendo identidade visual. Ideal para branding e séries.</p>
+    <div class="nao-card">
+      <span class="nao-card-icon">🛡️</span>
+      <h4>Suporte Dedicado</h4>
+      <p>Se travar em algo, a comunidade e o suporte estão prontos para ajudar.</p>
     </div>
-    <div class="feat-card">
-      <div class="feat-n">06</div>
-      <span class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-      <h3 class="feat-title">Garantia 7 Dias</h3>
-      <p class="feat-desc">Teste à vontade. Devolução de 100% sem perguntas se não gostar.</p>
+    <div class="nao-card">
+      <span class="nao-card-icon">🎯</span>
+      <h4>Resultados Reais</h4>
+      <p>Alta consistência nas gerações. Ideal para branding, séries e campanhas.</p>
     </div>
   </div>
 </section>
@@ -432,31 +529,43 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
   <div class="price-grid">
     <div class="p-card">
       <div class="p-tier">Starter</div>
-      <div class="p-price"><sup>R$</sup>0</div>
-      <div class="p-period">para sempre</div>
+      <div class="p-tagline">Comece sem pagar nada</div>
+      <div class="p-period">Ideal para testar a plataforma</div>
       <div class="p-div"></div>
       <ul class="p-feats">
-        <li>20 gerações por dia</li><li>Templates básicos</li><li>Exportação em HD</li><li>Comunidade de criadores</li>
+        <li>20 gerações por dia</li>
+        <li>Templates básicos</li>
+        <li>Exportação em HD</li>
+        <li>Comunidade de criadores</li>
       </ul>
       <a href="#" class="p-btn">Começar grátis</a>
     </div>
     <div class="p-card feat">
       <div class="p-tier">Creator</div>
-      <div class="p-price"><sup>R$</sup>47</div>
-      <div class="p-period">/mês · cancele quando quiser</div>
+      <div class="p-tagline">Para criadores sérios</div>
+      <div class="p-period">Cancele quando quiser · sem burocracia</div>
       <div class="p-div"></div>
       <ul class="p-feats">
-        <li>Gerações ilimitadas</li><li>API própria integrada</li><li>Todos os templates</li><li>Trilha de aprendizado</li><li>Dicas diárias de prompt</li><li>Suporte prioritário</li>
+        <li>Gerações ilimitadas</li>
+        <li>API própria integrada</li>
+        <li>Todos os templates</li>
+        <li>Trilha de aprendizado</li>
+        <li>Dicas diárias de prompt</li>
+        <li>Suporte prioritário</li>
       </ul>
-      <a href="#" class="p-btn">Testar 7 dias grátis</a>
+      <a href="#" class="p-btn">🚀 Testar 7 dias grátis</a>
     </div>
     <div class="p-card">
       <div class="p-tier">Studio</div>
-      <div class="p-price"><sup>R$</sup>127</div>
-      <div class="p-period">/mês · para equipes</div>
+      <div class="p-tagline">Para equipes e agências</div>
+      <div class="p-period">Multi-usuário · projetos compartilhados</div>
       <div class="p-div"></div>
       <ul class="p-feats">
-        <li>Tudo do Creator</li><li>5 usuários incluídos</li><li>Projetos compartilhados</li><li>Gestão de marca</li><li>Onboarding dedicado</li>
+        <li>Tudo do Creator</li>
+        <li>5 usuários incluídos</li>
+        <li>Projetos compartilhados</li>
+        <li>Gestão de marca</li>
+        <li>Onboarding dedicado</li>
       </ul>
       <a href="#" class="p-btn">Falar com vendas</a>
     </div>
@@ -478,6 +587,9 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+/* ── MOBILE CHECK ── */
+const isMobile = window.matchMedia('(max-width:768px)').matches;
+
 /* ── MOBILE MENU ── */
 function toggleMenu() {
   const h = document.getElementById('hamburger');
@@ -487,27 +599,162 @@ function toggleMenu() {
   document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
 }
 
-/* ── PLACEHOLDER RENDER ── */
-document.querySelectorAll('.ph').forEach(ph => {
-  const label = ph.dataset.label || 'Imagem';
-  ph.innerHTML = `
-    <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#a78bfa" stroke-width="1.4" stroke-linecap="round">
-      <rect x="3" y="3" width="18" height="18" rx="2"/>
-      <circle cx="8.5" cy="8.5" r="1.5"/>
-      <polyline points="21 15 16 10 5 21"/>
-    </svg>
-    <span style="font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:#4a4a6a;text-transform:uppercase;text-align:center;padding:0 10px;line-height:1.5;">${label}</span>
-  `;
-});
+/* ── MODAL ── */
+function openModal(gc) {
+  const img = gc.querySelector('img');
+  if (!img) return;
+  document.getElementById('modal-img').src = img.src;
+  document.getElementById('modal-label').textContent = img.dataset.label || img.alt || '';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modal')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModalBtn(); });
 
-/* ── AUTO SCROLL — velocidade aumentada ── */
+/* ── PARTICLES (hero) ── */
+(function initHeroParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = ['rgba(124,58,237,', 'rgba(155,89,245,', 'rgba(167,139,250,', 'rgba(232,121,249,'];
+
+  function mkP() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 3 + 1,
+      vx: (Math.random() - .5) * .4,
+      vy: (Math.random() - .5) * .4,
+      alpha: Math.random() * .6 + .15,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      pulse: Math.random() * Math.PI * 2,
+    };
+  }
+
+  for (let i = 0; i < 80; i++) particles.push(mkP());
+
+  let mx = -1000, my = -1000;
+  document.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mx = e.clientX - rect.left;
+    my = e.clientY - rect.top;
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    particles.forEach(p => {
+      p.pulse += .02;
+      const alpha = p.alpha + Math.sin(p.pulse) * .1;
+
+      // mouse repulsion
+      const dx = p.x - mx, dy = p.y - my;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        p.vx += (dx / dist) * .15;
+        p.vy += (dy / dist) * .15;
+      }
+
+      p.vx *= .98; p.vy *= .98;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+      // draw dot
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + alpha + ')';
+      ctx.fill();
+    });
+
+    // draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 100) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(124,58,237,${.15 * (1 - d / 100)})`;
+          ctx.lineWidth = .6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── PARTICLES (nao-sozinho section) ── */
+(function initSoloParticles() {
+  const canvas = document.getElementById('particles-solo');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const section = document.getElementById('nao-sozinho');
+
+  function resize() {
+    W = canvas.width = section.offsetWidth;
+    H = canvas.height = section.offsetHeight;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * (W || 1200),
+      y: Math.random() * (H || 800),
+      r: Math.random() * 2.5 + .5,
+      vx: (Math.random() - .5) * .3,
+      vy: (Math.random() - .5) * .3,
+      alpha: Math.random() * .4 + .1,
+      pulse: Math.random() * Math.PI * 2,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.pulse += .018;
+      const a = p.alpha + Math.sin(p.pulse) * .08;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(124,58,237,${a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── AUTO SCROLL — velocidade alta ── */
 const tracks = [
-  { el: document.getElementById('track-cri'), dir: 1,  speed: 1.2  },  // era 0.5
-  { el: document.getElementById('track-car'), dir: -1, speed: 1.0  },  // era 0.4
-  { el: document.getElementById('track-idv'), dir: 1,  speed: 1.3  },  // era 0.55
+  { el: document.getElementById('track-cri'), dir: 1,  speed: 2.0 },
+  { el: document.getElementById('track-car'), dir: -1, speed: 1.7 },
+  { el: document.getElementById('track-idv'), dir: 1,  speed: 2.2 },
 ];
 
-// Duplica itens para loop infinito
 tracks.forEach(({ el }) => {
   const items = Array.from(el.children);
   items.forEach(item => el.appendChild(item.cloneNode(true)));
@@ -516,11 +763,9 @@ tracks.forEach(({ el }) => {
 tracks.forEach(t => {
   t.el.addEventListener('mouseenter', () => t.paused = true);
   t.el.addEventListener('mouseleave', () => t.paused = false);
-  // touch pause
   t.el.addEventListener('touchstart', () => t.paused = true, { passive: true });
-  t.el.addEventListener('touchend',   () => setTimeout(() => t.paused = false, 1500));
-  t.pos = 0;
-  t.paused = false;
+  t.el.addEventListener('touchend', () => setTimeout(() => t.paused = false, 1500));
+  t.pos = 0; t.paused = false;
 });
 
 function autoScroll() {
@@ -537,7 +782,6 @@ function autoScroll() {
 autoScroll();
 
 /* ── CURSOR (desktop only) ── */
-const isMobile = window.matchMedia('(max-width:768px)').matches;
 if (!isMobile) {
   const dot = document.querySelector('.c-dot'), ring = document.querySelector('.c-ring');
   let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
@@ -577,7 +821,6 @@ if (!isMobile) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, .1, 200);
   camera.position.set(0, 0, 5);
-
   function mkPts(count, radius, size, color, spread) {
     const geo = new THREE.BufferGeometry(), pos = new Float32Array(count*3);
     for (let i=0; i<count; i++) {
@@ -594,7 +837,6 @@ if (!isMobile) {
   r1.rotation.x=Math.PI/4; scene.add(r1);
   const r2=new THREE.Mesh(new THREE.TorusGeometry(2.6,.002,2,180),new THREE.MeshBasicMaterial({color:0x9b59f5,transparent:true,opacity:.1}));
   r2.rotation.x=-Math.PI/3; r2.rotation.y=Math.PI/5; scene.add(r2);
-
   let tx=0,ty=0,t=0;
   document.addEventListener('mousemove',e=>{tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2;});
   (function anim(){
@@ -620,7 +862,7 @@ const io = new IntersectionObserver(entries=>{
     if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*120);
   });
 },{threshold:.15});
-document.querySelectorAll('.feat-card,.stat').forEach(el=>io.observe(el));
+document.querySelectorAll('.feat-card,.stat,.step,.nao-card').forEach(el=>io.observe(el));
 
 /* ── COUNT UP ── */
 const co = new IntersectionObserver(entries=>{
