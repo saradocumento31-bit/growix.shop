@@ -50,7 +50,9 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 5%;background:linear-gradient(to bottom,rgba(15,15,26,.95) 60%,transparent);backdrop-filter:blur(12px);}
-.logo{font-size:1.5rem;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:2px;}
+.logo{font-size:1.5rem;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:2px;text-decoration:none;cursor:pointer;}
+.logo:hover .logo-arr{transform:rotate(-30deg) scale(1.3);}
+.logo-arr{transition:transform .2s;}
 .logo-t{color:var(--white);}
 .logo-x{color:var(--purple2);}
 .logo-arr{font-size:.9rem;color:var(--purple3);transform:rotate(-30deg);display:inline-block;}
@@ -284,6 +286,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 
   footer{flex-direction:column;text-align:center;padding:28px 5%;}
   #back-top{bottom:20px;right:20px;width:42px;height:42px;}
+  #contato .grid-2{grid-template-columns:1fr!important;}
 
   .support-bottom-cards{grid-template-columns:1fr;}
 }
@@ -309,14 +312,14 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 
 <!-- NAV -->
 <nav>
-  <div class="logo"><span class="logo-t">Growi</span><span class="logo-x">X</span><span class="logo-arr"> ↗</span></div>
+  <a href="#hero" class="logo"><span class="logo-t">Growi</span><span class="logo-x">X</span><span class="logo-arr"> ↗</span></a>
   <ul>
     <li><a href="#galeria">Galeria</a></li>
     <li><a href="#support">Suporte</a></li>
     <li><a href="#features">Recursos</a></li>
     <li><a href="#pricing">Planos</a></li>
   </ul>
-  <a href="#pricing" class="nav-cta">Começar agora</a>
+  <a href="#contato" class="nav-cta">Começar agora</a>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -328,7 +331,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
   <a href="#support" onclick="toggleMenu()">Suporte</a>
   <a href="#features" onclick="toggleMenu()">Recursos</a>
   <a href="#pricing" onclick="toggleMenu()">Planos</a>
-  <a href="#pricing" class="mob-cta" onclick="toggleMenu()">Começar agora</a>
+  <a href="#contato" class="mob-cta" onclick="toggleMenu()">Começar agora</a>
 </div>
 
 <!-- HERO -->
@@ -342,7 +345,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
   </h1>
   <p class="hero-sub">Crie artes, criativos e carrosseis profissionais com IA — sem precisar de designer, sem curva de aprendizado.</p>
   <div class="hero-btns">
-    <a href="#pricing" class="btn-main">Criar agora</a>
+    <a href="#contato" class="btn-main">Criar agora</a>
     <a href="#galeria" class="btn-outline">Ver galeria</a>
   </div>
   <div class="hero-scroll"><div class="scroll-bar"></div>Scroll</div>
@@ -350,8 +353,8 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 
 <!-- STATS -->
 <section id="stats">
-  <div class="stat"><div class="stat-n" data-target="47000">0</div><div class="stat-l">Obras geradas</div></div>
-  <div class="stat"><div class="stat-n" data-target="12000">0</div><div class="stat-l">Criadores ativos</div></div>
+  <div class="stat"><div class="stat-n" data-target="15000">0</div><div class="stat-l">Obras geradas</div></div>
+  <div class="stat"><div class="stat-n" data-target="4000">0</div><div class="stat-l">Criadores ativos</div></div>
   <div class="stat"><div class="stat-n" data-target="98">0</div><div class="stat-l">% satisfação</div></div>
   <div class="stat"><div class="stat-n" data-target="7">0</div><div class="stat-l">Dias de garantia</div></div>
 </section>
@@ -451,7 +454,99 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
             <div class="lb-dot"></div><div class="lb-dot"></div><div class="lb-dot"></div>
           </div>
           <div class="laptop-content">
-            <img src="ChatGPT Image 30 de abr. de 2026, 21_05_00.png" alt="GrowixX plataforma" id="laptop-img">
+            <svg viewBox="0 0 540 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#080814;">
+              <!-- Top bar -->
+              <rect width="540" height="32" fill="#0d0d22"/>
+              <circle cx="16" cy="16" r="5" fill="#ff5f57"/>
+              <circle cx="30" cy="16" r="5" fill="#febc2e"/>
+              <circle cx="44" cy="16" r="5" fill="#28c840"/>
+              <rect x="70" y="9" width="200" height="14" rx="7" fill="#151530"/>
+              <text x="170" y="20" font-family="monospace" font-size="8" fill="#4a4a7a" text-anchor="middle">growix.app/dashboard</text>
+              <!-- Sidebar -->
+              <rect x="0" y="32" width="100" height="228" fill="#0c0c1e"/>
+              <rect x="8" y="48" width="84" height="28" rx="6" fill="#7c3aed" opacity=".25"/>
+              <rect x="16" y="58" width="40" height="6" rx="3" fill="#a78bfa" opacity=".8"/>
+              <rect x="8" y="84" width="84" height="24" rx="6" fill="none"/>
+              <rect x="16" y="92" width="50" height="5" rx="2.5" fill="#4a4a6a"/>
+              <rect x="8" y="114" width="84" height="24" rx="6" fill="none"/>
+              <rect x="16" y="122" width="36" height="5" rx="2.5" fill="#4a4a6a"/>
+              <rect x="8" y="144" width="84" height="24" rx="6" fill="none"/>
+              <rect x="16" y="152" width="44" height="5" rx="2.5" fill="#4a4a6a"/>
+              <rect x="8" y="174" width="84" height="24" rx="6" fill="none"/>
+              <rect x="16" y="182" width="30" height="5" rx="2.5" fill="#4a4a6a"/>
+              <!-- Main content -->
+              <!-- Header -->
+              <rect x="112" y="40" width="160" height="10" rx="5" fill="#f5f4ff" opacity=".9"/>
+              <rect x="112" y="56" width="100" height="7" rx="3.5" fill="#6b6b8a"/>
+              <!-- Generate button -->
+              <rect x="420" y="40" width="108" height="28" rx="7" fill="url(#gbtn)"/>
+              <text x="474" y="58" font-family="'Syne',sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">✦ Gerar Arte</text>
+              <defs>
+                <linearGradient id="gbtn" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#9b59f5"/>
+                </linearGradient>
+                <linearGradient id="card1g" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1a0a3a"/>
+                  <stop offset="100%" stop-color="#0d0d22"/>
+                </linearGradient>
+              </defs>
+              <!-- Cards grid -->
+              <rect x="112" y="80" width="100" height="80" rx="8" fill="url(#card1g)" stroke="#7c3aed" stroke-width=".6" stroke-opacity=".5"/>
+              <rect x="116" y="84" width="92" height="52" rx="5" fill="#1c0e38"/>
+              <!-- fake image in card 1 -->
+              <rect x="116" y="84" width="92" height="52" rx="5" fill="#1c0e38"/>
+              <circle cx="162" cy="98" r="8" fill="#7c3aed" opacity=".4"/>
+              <ellipse cx="162" cy="120" rx="22" ry="10" fill="#4a1a8a" opacity=".5"/>
+              <rect x="118" y="142" width="40" height="5" rx="2.5" fill="#a78bfa" opacity=".7"/>
+              <rect x="118" y="152" width="60" height="4" rx="2" fill="#4a4a6a"/>
+
+              <rect x="222" y="80" width="100" height="80" rx="8" fill="url(#card1g)" stroke="#7c3aed" stroke-width=".6" stroke-opacity=".5"/>
+              <rect x="226" y="84" width="92" height="52" rx="5" fill="#0e1c38"/>
+              <rect x="240" y="90" width="64" height="40" rx="4" fill="#1a3060" opacity=".8"/>
+              <rect x="246" y="96" width="52" height="6" rx="3" fill="#60a5fa" opacity=".5"/>
+              <rect x="246" y="106" width="36" height="4" rx="2" fill="#60a5fa" opacity=".3"/>
+              <rect x="246" y="114" width="44" height="4" rx="2" fill="#60a5fa" opacity=".3"/>
+              <rect x="228" y="142" width="40" height="5" rx="2.5" fill="#a78bfa" opacity=".7"/>
+              <rect x="228" y="152" width="55" height="4" rx="2" fill="#4a4a6a"/>
+
+              <rect x="332" y="80" width="100" height="80" rx="8" fill="url(#card1g)" stroke="#9b59f5" stroke-width="1" stroke-opacity=".8"/>
+              <rect x="336" y="84" width="92" height="52" rx="5" fill="#180838"/>
+              <circle cx="382" cy="110" r="18" fill="#7c3aed" opacity=".2"/>
+              <circle cx="382" cy="110" r="10" fill="#9b59f5" opacity=".4"/>
+              <circle cx="382" cy="110" r="4" fill="#c4b5fd"/>
+              <rect x="338" y="140" width="40" height="5" rx="2.5" fill="#c4b5fd" opacity=".9"/>
+              <rect x="338" y="150" width="60" height="4" rx="2" fill="#4a4a6a"/>
+
+              <rect x="442" y="80" width="86" height="80" rx="8" fill="url(#card1g)" stroke="#7c3aed" stroke-width=".6" stroke-opacity=".5"/>
+              <rect x="446" y="84" width="78" height="52" rx="5" fill="#1a1030"/>
+              <rect x="452" y="90" width="66" height="20" rx="3" fill="#2a1060"/>
+              <rect x="452" y="114" width="50" height="4" rx="2" fill="#a78bfa" opacity=".4"/>
+              <rect x="452" y="122" width="40" height="4" rx="2" fill="#a78bfa" opacity=".3"/>
+              <rect x="448" y="142" width="40" height="5" rx="2.5" fill="#a78bfa" opacity=".7"/>
+              <rect x="448" y="152" width="30" height="4" rx="2" fill="#4a4a6a"/>
+
+              <!-- Second row -->
+              <rect x="112" y="170" width="100" height="70" rx="8" fill="url(#card1g)" stroke="#7c3aed" stroke-width=".6" stroke-opacity=".4"/>
+              <rect x="116" y="174" width="92" height="40" rx="5" fill="#0e1a18"/>
+              <rect x="120" y="178" width="84" height="32" rx="3" fill="#0a2020"/>
+              <rect x="126" y="184" width="30" height="20" rx="2" fill="#0a4040" opacity=".8"/>
+              <rect x="160" y="186" width="36" height="5" rx="2" fill="#34d399" opacity=".4"/>
+              <rect x="160" y="195" width="28" height="4" rx="2" fill="#34d399" opacity=".25"/>
+              <rect x="118" y="220" width="35" height="5" rx="2.5" fill="#a78bfa" opacity=".7"/>
+
+              <rect x="222" y="170" width="100" height="70" rx="8" fill="url(#card1g)" stroke="#7c3aed" stroke-width=".6" stroke-opacity=".4"/>
+              <rect x="226" y="174" width="92" height="40" rx="5" fill="#1a100a"/>
+              <circle cx="272" cy="194" r="14" fill="#f97316" opacity=".15"/>
+              <circle cx="272" cy="194" r="7" fill="#f97316" opacity=".3"/>
+              <rect x="228" y="220" width="42" height="5" rx="2.5" fill="#a78bfa" opacity=".7"/>
+
+              <!-- Prompt input at bottom -->
+              <rect x="112" y="248" width="344" height="20" rx="7" fill="#12122e" stroke="#7c3aed" stroke-width=".5" stroke-opacity=".5"/>
+              <text x="124" y="261" font-family="monospace" font-size="7.5" fill="#6b6b8a">✦ Descreva o criativo que deseja gerar...</text>
+              <rect x="446" y="249" width="52" height="18" rx="5" fill="#7c3aed" opacity=".7"/>
+              <text x="472" y="261" font-family="monospace" font-size="7.5" fill="white" text-anchor="middle">Gerar</text>
+            </svg>
           </div>
         </div>
         <div class="laptop-base"></div>
@@ -574,7 +669,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
         <li>Exportação em HD</li>
         <li>Comunidade de criadores</li>
       </ul>
-      <a href="#" class="p-btn">Começar agora →</a>
+      <a href="#contato" class="p-btn">Começar agora →</a>
     </div>
     <div class="p-card feat">
       <div class="p-tier">Creator</div>
@@ -589,7 +684,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
         <li>Dicas diárias de prompt</li>
         <li>Suporte prioritário</li>
       </ul>
-      <a href="#" class="p-btn">Quero o Creator →</a>
+      <a href="#contato" class="p-btn">Quero o Creator →</a>
     </div>
     <div class="p-card">
       <div class="p-tier">Studio</div>
@@ -603,7 +698,7 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
         <li>Gestão de marca</li>
         <li>Onboarding dedicado</li>
       </ul>
-      <a href="#" class="p-btn">Falar com vendas →</a>
+      <a href="#contato" class="p-btn">Falar com vendas →</a>
     </div>
   </div>
 </section>
@@ -612,13 +707,54 @@ footer{position:relative;z-index:10;background:var(--navy);border-top:1px solid 
 <section id="cta">
   <h2 class="cta-title">Sua primeira<br><span class="grad">obra-prima</span><br>em minutos.</h2>
   <p class="cta-sub">Sem instalação. Sem complicação. Só criação.</p>
-  <a href="#" class="btn-main" style="display:inline-block;font-size:.95rem;padding:18px 56px;">Criar agora →</a>
+  <a href="#contato" class="btn-main" style="display:inline-block;font-size:.95rem;padding:18px 56px;">Criar agora →</a>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contato" style="position:relative;z-index:10;background:var(--navy);padding:80px 5%;border-top:1px solid rgba(124,58,237,.08);">
+  <p class="s-label">Contato</p>
+  <h2 class="s-title" style="margin-bottom:8px;">Pronto para <span>começar?</span></h2>
+  <p style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--muted);margin-bottom:48px;max-width:480px;line-height:1.7;">Preencha o formulário e entraremos em contato pelo WhatsApp em instantes.</p>
+  <div style="max-width:560px;">
+    <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div>
+        <label style="display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--purple3);text-transform:uppercase;margin-bottom:8px;">Nome</label>
+        <input id="cf-nome" type="text" placeholder="Seu nome" style="width:100%;background:#12122e;border:1px solid rgba(124,58,237,.25);border-radius:8px;padding:13px 16px;color:var(--white);font-family:'DM Mono',monospace;font-size:.82rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(124,58,237,.7)'" onblur="this.style.borderColor='rgba(124,58,237,.25)'">
+      </div>
+      <div>
+        <label style="display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--purple3);text-transform:uppercase;margin-bottom:8px;">WhatsApp</label>
+        <input id="cf-tel" type="tel" placeholder="(11) 99999-9999" style="width:100%;background:#12122e;border:1px solid rgba(124,58,237,.25);border-radius:8px;padding:13px 16px;color:var(--white);font-family:'DM Mono',monospace;font-size:.82rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(124,58,237,.7)'" onblur="this.style.borderColor='rgba(124,58,237,.25)'">
+      </div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--purple3);text-transform:uppercase;margin-bottom:8px;">Plano de interesse</label>
+      <select id="cf-plano" style="width:100%;background:#12122e;border:1px solid rgba(124,58,237,.25);border-radius:8px;padding:13px 16px;color:var(--white);font-family:'DM Mono',monospace;font-size:.82rem;outline:none;transition:border-color .2s;cursor:pointer;" onfocus="this.style.borderColor='rgba(124,58,237,.7)'" onblur="this.style.borderColor='rgba(124,58,237,.25)'">
+        <option value="" style="background:#12122e;">Selecione um plano...</option>
+        <option value="Essencial" style="background:#12122e;">Essencial</option>
+        <option value="Creator" style="background:#12122e;">Creator</option>
+        <option value="Studio" style="background:#12122e;">Studio</option>
+      </select>
+    </div>
+    <div style="margin-bottom:24px;">
+      <label style="display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--purple3);text-transform:uppercase;margin-bottom:8px;">Mensagem (opcional)</label>
+      <textarea id="cf-msg" placeholder="Conte um pouco sobre seu negócio ou dúvida..." rows="3" style="width:100%;background:#12122e;border:1px solid rgba(124,58,237,.25);border-radius:8px;padding:13px 16px;color:var(--white);font-family:'DM Mono',monospace;font-size:.82rem;outline:none;resize:vertical;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(124,58,237,.7)'" onblur="this.style.borderColor='rgba(124,58,237,.25)'"></textarea>
+    </div>
+    <button onclick="enviarWhatsApp()" class="btn-main" style="width:100%;text-align:center;padding:17px;font-size:.92rem;border:none;">
+      Enviar pelo WhatsApp →
+    </button>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo">Growi<span>X</span> ↗</div>
-  <div class="f-copy">© 2025 GrowiX · Evoluir para Liderar</div>
+  <div class="f-logo">Growi<span>X</span> <a href="https://growix.app" target="_blank" style="color:var(--purple3);text-decoration:none;">↗</a></div>
+  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center;">
+    <a href="https://instagram.com/growix.mkt" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--muted);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;transition:color .2s;" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='var(--muted)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @growix.mkt
+    </a>
+    <div class="f-copy">© 2025 GrowiX · Evoluir para Liderar</div>
+  </div>
 </footer>
 
 <!-- BACK TO TOP -->
@@ -635,6 +771,21 @@ function toggleMenu() {
   h.classList.toggle('open');
   m.classList.toggle('open');
   document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+
+/* ── WHATSAPP FORM ── */
+function enviarWhatsApp() {
+  const nome = document.getElementById('cf-nome').value.trim();
+  const tel = document.getElementById('cf-tel').value.trim();
+  const plano = document.getElementById('cf-plano').value;
+  const msg = document.getElementById('cf-msg').value.trim();
+  if (!nome || !tel) {
+    alert('Por favor, preencha seu nome e WhatsApp.');
+    return;
+  }
+  const texto = `Olá! Me chamo *${nome}*.\nTelefone: ${tel}\nPlano de interesse: *${plano || 'Não informado'}*${msg ? `\n\nMensagem: ${msg}` : ''}`;
+  const url = `https://wa.me/5511977785836?text=${encodeURIComponent(texto)}`;
+  window.open(url, '_blank');
 }
 
 /* ── LIGHTBOX ── */
